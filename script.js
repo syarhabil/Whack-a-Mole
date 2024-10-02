@@ -141,10 +141,12 @@ startButton.addEventListener('click', function() {
 
 // Fungsi untuk share skor ke WhatsApp
 shareWhatsApp.addEventListener('click', function() {
-    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga!`;
+    const gameUrl = 'https://syarhabil.github.io/Whack-a-Mole/';  // URL GitHub Pages
+    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: ${gameUrl}`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
+
 
 // Fungsi untuk share ke Instagram (mengarahkan ke kamera cerita Instagram)
 shareInstagram.addEventListener('click', function() {
@@ -153,6 +155,19 @@ shareInstagram.addEventListener('click', function() {
     const instagramUrl = `instagram://story-camera`;  // Buka Instagram Stories kamera
     window.open(instagramUrl, '_blank');
 });
+
+// Fungsi untuk mengambil screenshot saat game over
+document.getElementById('screenshotBtn').addEventListener('click', function() {
+    const gameElement = document.querySelector('.container'); // Elemen game yang akan discreenshot
+    
+    html2canvas(gameElement).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'Game_Whack-a-Mole_by_Syarhabil.png'; // Nama file screenshot
+        link.click(); // Simpan screenshot
+    });
+});
+
 
 // Menambahkan event listener untuk klik pada mole
 moles.forEach(mole => mole.addEventListener('click', bonk));

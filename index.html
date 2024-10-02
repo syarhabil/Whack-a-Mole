@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Enhanced Whack-a-Mole Game</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
 <body>
     <!-- Modal Awal untuk pop-up saat game dimulai -->
@@ -29,9 +30,10 @@
                     <button id="shareWhatsApp" class="share-btn">WhatsApp</button>
                     <button id="shareInstagram" class="share-btn">Instagram</button>
                 </div>
+                <button id="screenshotBtn" class="restart-btn">Take Screenshot</button> <!-- Tombol Screenshot -->
             </div>
         </div>
-
+        
         <h1>Whack-a-Mole!</h1>
         <h2>Score: <span id="score">0</span> | Time: <span id="time">30</span>s</h2>
         <div class="game-grid">
