@@ -139,12 +139,12 @@ startButton.addEventListener('click', function() {
     startGame(); // Memulai game
 });
 
-// Fungsi untuk share skor ke WhatsApp
 shareWhatsApp.addEventListener('click', function() {
-    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga!`;
+    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: https://syarhabil.github.io/Whack-a-Mole/`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
+
 
 // Fungsi untuk share ke Instagram (mengarahkan ke kamera cerita Instagram)
 shareInstagram.addEventListener('click', function() {
