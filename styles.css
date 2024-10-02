@@ -7,7 +7,6 @@ body {
     height: 100vh;
     margin: 0;
     padding: 20px; /* Tambahkan padding untuk jarak atas dan bawah */
-    touch-action: manipulation;
 }
 
 .container {
