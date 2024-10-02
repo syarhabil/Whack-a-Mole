@@ -86,12 +86,15 @@ function randomHole(holes) {
 function peep() {
     const time = randomTime(200, 1000);
     const hole = randomHole(holes);
-    hole.querySelector('.mole').classList.add('up');
+    const mole = hole.querySelector('.mole'); // Ambil mole di dalam hole
+    mole.classList.add('up'); // Mole muncul
+    
     setTimeout(() => {
-        hole.querySelector('.mole').classList.remove('up');
-        if (!timeUp) peep();
+        mole.classList.remove('up'); // Mole sembunyi setelah waktu tertentu
+        if (!timeUp) peep(); // Lanjutkan memunculkan mole jika waktu belum habis
     }, time);
 }
+
 
 // Fungsi countdown untuk mengurangi waktu
 function countdown() {
@@ -101,8 +104,8 @@ function countdown() {
 
 // Fungsi ketika mole dipukul (bonk)
 function bonk(e) {
-    if (!e.isTrusted) return;  // Cegah klik palsu (cheating)
-
+    if (!this.classList.contains('up')) return;  // Pastikan hanya bisa memukul mole yang muncul (class 'up')
+    
     score++;
     this.classList.remove('up');
     scoreBoard.textContent = score;
@@ -165,6 +168,22 @@ document.getElementById('screenshotBtn').addEventListener('click', function() {
         link.href = canvas.toDataURL('image/png');
         link.download = 'Game_Whack-a-Mole_by_Syarhabil.png'; // Nama file screenshot
         link.click(); // Simpan screenshot
+    });
+});
+
+// Menambahkan event listener untuk klik pada mole
+moles.forEach(mole => {
+    mole.addEventListener('click', function(e) {
+        if (!this.classList.contains('up')) return; // Hanya bisa dipukul ketika mole muncul (memiliki class 'up')
+        
+        score++; // Menambah score
+        scoreBoard.textContent = score; // Update tampilan score
+        
+        this.classList.remove('up'); // Sembunyikan mole setelah dipukul
+        
+        // Mainkan suara hit
+        hitSound.currentTime = 0;  // Reset sound
+        hitSound.play();
     });
 });
 
