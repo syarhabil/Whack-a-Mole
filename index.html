@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Enhanced Whack-a-Mole Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Modal Awal untuk pop-up saat game dimulai -->
+    <div id="startModal" class="modal">
+        <div class="modal-content">
+            <h2>Made with ❤️ by Syarhabil</h2>
+            <p>Untuk seru-seruan aja :)</p>
+            <button id="closeStartModal" class="start-btn">Mulai Game</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Modal Game Over -->
+        <div id="gameOverModal" class="modal">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <p>Your final score is: <span id="finalScore">0</span></p>
+                <button id="restartGame" class="restart-btn">Restart Game</button>
+                <div class="share-options">
+                    <h3>Share your score:</h3>
+                    <button id="shareWhatsApp" class="share-btn">WhatsApp</button>
+                    <button id="shareInstagram" class="share-btn">Instagram</button>
+                </div>
+            </div>
+        </div>
+
+        <h1>Whack-a-Mole!</h1>
+        <h2>Score: <span id="score">0</span> | Time: <span id="time">30</span>s</h2>
+        <div class="game-grid">
+            <div class="hole" id="hole1"><div class="mole"></div></div>
+            <div class="hole" id="hole2"><div class="mole"></div></div>
+            <div class="hole" id="hole3"><div class="mole"></div></div>
+            <div class="hole" id="hole4"><div class="mole"></div></div>
+            <div class="hole" id="hole5"><div class="mole"></div></div>
+            <div class="hole" id="hole6"><div class="mole"></div></div>
+            <div class="hole" id="hole7"><div class="mole"></div></div>
+            <div class="hole" id="hole8"><div class="mole"></div></div>
+            <div class="hole" id="hole9"><div class="mole"></div></div>
+        </div>
+        <button id="startGame" class="start-btn">Start Game</button>
+        <button id="resetGame" class="reset-btn">Reset Game</button>
+    </div>
+
+    <!-- Add sound effects -->
+    <audio id="hitSound" src="hit.mp3"></audio>
+    <audio id="missSound" src="miss.mp3"></audio>
+    <audio id="backgroundMusic" src="background.mp3" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+body {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background-color: #e2f7e2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px; /* Tambahkan padding untuk jarak atas dan bawah */
+}
+
+.container {
+    text-align: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    max-width: 500px; /* Kurangi lebar maksimal */
+    width: 100%;
+    margin: auto;
+    margin-top: 20px; /* Tambahkan jarak margin atas */
+    margin-bottom: 20px; /* Tambahkan jarak margin bawah */
+    transition: transform 0.3s ease;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Responsive */
+@media only screen and (max-width: 600px) {
+    .container {
+        padding: 15px;
+        margin-top: 40px; /* Tambah jarak margin atas di mobile */
+        margin-bottom: 40px; /* Tambah jarak margin bawah di mobile */
+    }
+
+    .game-grid {
+        grid-gap: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .hole {
+        width: 100px;
+        height: 100px;
+    }
+
+    .mole {
+        width: 70px;
+        height: 70px;
+        left: 15px;
+    }
+}
+
+
+h1 {
+    font-size: 2.5rem; /* Kurangi ukuran font untuk header */
+    color: #333;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 1.3rem; /* Kurangi ukuran font untuk sub-header */
+    margin: 15px 0;
+    color: #444;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px); /* Kurangi ukuran grid */
+    grid-gap: 20px; /* Kurangi jarak antara lubang mole */
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.hole {
+    position: relative;
+    width: 120px; /* Kurangi ukuran lubang */
+    height: 120px; /* Kurangi ukuran lubang */
+    background-color: #663300;
+    border-radius: 50%;
+    box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+}
+
+.mole {
+    position: absolute;
+    width: 90px; /* Kurangi ukuran mole */
+    height: 90px; /* Kurangi ukuran mole */
+    background-image: url('mole.png');
+    background-size: cover;
+    bottom: -100px;
+    left: 15px; /* Sesuaikan posisi */
+    transition: bottom 0.2s ease;
+    cursor: pointer;
+}
+
+.mole.up {
+    bottom: 0;
+    animation: moleAppear 0.2s ease-in-out forwards;
+}
+
+@keyframes moleAppear {
+    0% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.start-btn, .reset-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.start-btn:hover, .reset-btn:hover {
+    background-color: #218838;
+}
+
+.reset-btn {
+    background-color: #ffc107;
+}
+
+.reset-btn:hover {
+    background-color: #e0a800;
+}
+
+#score {
+    font-weight: bold;
+    color: #28a745;
+}
+
+#time {
+    font-weight: bold;
+    color: #dc3545;
+}
+/* Modal styles */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    animation: popUp 0.5s ease-in-out;
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.modal-content h2 {
+    font-size: 2.5rem;
+    color: #dc3545;
+}
+
+.modal-content p {
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.restart-btn {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.restart-btn:hover {
+    background-color: #218838;
+}
+/* Share buttons */
+.share-options {
+    margin-top: 20px;
+}
+
+.share-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s;
+}
+
+.share-btn:hover {
+    background-color: #0056b3;
+}
+
+.share-btn:nth-child(2) {
+    background-color: #e1306c; /* Instagram color */
+}
+
+.share-btn:nth-child(2):hover {
+    background-color: #c2185b;
+}
