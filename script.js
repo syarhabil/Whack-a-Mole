@@ -142,7 +142,7 @@ startButton.addEventListener('click', function() {
 // Fungsi untuk share skor ke WhatsApp
 shareWhatsApp.addEventListener('click', function() {
     const gameUrl = 'https://syarhabil.github.io/Whack-a-Mole/';  // URL GitHub Pages
-    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: https://syarhabil.github.io/Whack-a-Mole/`;
+    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: ${gameUrl}`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
@@ -163,7 +163,7 @@ document.getElementById('screenshotBtn').addEventListener('click', function() {
     html2canvas(gameElement).then(canvas => {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
-        link.download = 'Game_Whack-a-Mole_by_Syarhabil.png'; // Nama file screenshot
+        link.download = 'Game_Whack-a-Mole_by.png'; // Nama file screenshot
         link.click(); // Simpan screenshot
     });
 });
