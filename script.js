@@ -95,7 +95,6 @@ function peep() {
     }, time);
 }
 
-
 // Fungsi countdown untuk mengurangi waktu
 function countdown() {
     time--;
@@ -107,9 +106,9 @@ function bonk(e) {
     if (!this.classList.contains('up')) return;  // Pastikan hanya bisa memukul mole yang muncul (class 'up')
     
     score++;
-    this.classList.remove('up');
     scoreBoard.textContent = score;
-
+    this.classList.remove('up'); // Sembunyikan mole setelah dipukul
+    
     // Mainkan suara hit
     hitSound.currentTime = 0;  // Reset sound
     hitSound.play();
@@ -150,7 +149,6 @@ shareWhatsApp.addEventListener('click', function() {
     window.open(whatsappUrl, '_blank');
 });
 
-
 // Fungsi untuk share ke Instagram (mengarahkan ke kamera cerita Instagram)
 shareInstagram.addEventListener('click', function() {
     const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga!`;
@@ -170,23 +168,6 @@ document.getElementById('screenshotBtn').addEventListener('click', function() {
         link.click(); // Simpan screenshot
     });
 });
-
-// Menambahkan event listener untuk klik pada mole
-moles.forEach(mole => {
-    mole.addEventListener('click', function(e) {
-        if (!this.classList.contains('up')) return; // Hanya bisa dipukul ketika mole muncul (memiliki class 'up')
-        
-        score++; // Menambah score
-        scoreBoard.textContent = score; // Update tampilan score
-        
-        this.classList.remove('up'); // Sembunyikan mole setelah dipukul
-        
-        // Mainkan suara hit
-        hitSound.currentTime = 0;  // Reset sound
-        hitSound.play();
-    });
-});
-
 
 // Menambahkan event listener untuk klik pada mole
 moles.forEach(mole => mole.addEventListener('click', bonk));
