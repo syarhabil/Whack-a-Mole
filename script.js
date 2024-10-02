@@ -142,7 +142,7 @@ startButton.addEventListener('click', function() {
 // Fungsi untuk share skor ke WhatsApp
 shareWhatsApp.addEventListener('click', function() {
     const gameUrl = 'https://syarhabil.github.io/Whack-a-Mole/';  // URL GitHub Pages
-    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: ${gameUrl}`;
+    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: syarhabil.github.io/Whack-a-Mole/`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });

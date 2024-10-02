@@ -242,3 +242,12 @@ h2 {
 .share-btn:nth-child(2):hover {
     background-color: #c2185b;
 }
+#screenshotBtn {
+    background-color: #ff5722;
+    color: white;
+    margin-top: 15px;
+}
+
+#screenshotBtn:hover {
+    background-color: #e64a19;
+}
