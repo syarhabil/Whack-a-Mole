@@ -86,12 +86,10 @@ function randomHole(holes) {
 function peep() {
     const time = randomTime(200, 1000);
     const hole = randomHole(holes);
-    const mole = hole.querySelector('.mole'); // Ambil mole di dalam hole
-    mole.classList.add('up'); // Mole muncul
-    
+    hole.querySelector('.mole').classList.add('up');
     setTimeout(() => {
-        mole.classList.remove('up'); // Mole sembunyi setelah waktu tertentu
-        if (!timeUp) peep(); // Lanjutkan memunculkan mole jika waktu belum habis
+        hole.querySelector('.mole').classList.remove('up');
+        if (!timeUp) peep();
     }, time);
 }
 
@@ -103,12 +101,12 @@ function countdown() {
 
 // Fungsi ketika mole dipukul (bonk)
 function bonk(e) {
-    if (!this.classList.contains('up')) return;  // Pastikan hanya bisa memukul mole yang muncul (class 'up')
-    
+    if (!e.isTrusted) return;  // Cegah klik palsu (cheating)
+
     score++;
+    this.classList.remove('up');
     scoreBoard.textContent = score;
-    this.classList.remove('up'); // Sembunyikan mole setelah dipukul
-    
+
     // Mainkan suara hit
     hitSound.currentTime = 0;  // Reset sound
     hitSound.play();
@@ -144,10 +142,11 @@ startButton.addEventListener('click', function() {
 // Fungsi untuk share skor ke WhatsApp
 shareWhatsApp.addEventListener('click', function() {
     const gameUrl = 'https://syarhabil.github.io/Whack-a-Mole/';  // URL GitHub Pages
-    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: syarhabil.github.io/Whack-a-Mole/`;
+    const message = `Saya mendapatkan score ${score} di game "Whack-a-Mole"! Ayo mainkan juga di sini: https://syarhabil.github.io/Whack-a-Mole/`;
     const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 });
+
 
 // Fungsi untuk share ke Instagram (mengarahkan ke kamera cerita Instagram)
 shareInstagram.addEventListener('click', function() {
@@ -168,6 +167,7 @@ document.getElementById('screenshotBtn').addEventListener('click', function() {
         link.click(); // Simpan screenshot
     });
 });
+
 
 // Menambahkan event listener untuk klik pada mole
 moles.forEach(mole => mole.addEventListener('click', bonk));
