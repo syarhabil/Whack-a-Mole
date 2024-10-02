@@ -1,5 +1,5 @@
 body {
-    font-family: 'Patrick Hand', 'Comic Sans MS', 'Comic Sans', cursive, sans-serif;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
     background-color: #e2f7e2;
     display: flex;
     justify-content: center;
@@ -7,14 +7,6 @@ body {
     height: 100vh;
     margin: 0;
     padding: 20px; /* Tambahkan padding untuk jarak atas dan bawah */
-}
-
-@font-face {
-    font-family: 'Patrick Hand';
-    src: url('https://fonts.gstatic.com/s/patrickhand/v13/LDI1apSQOAYtSuYWp8ZhfYe5AUpJ.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
 }
 
 .container {
